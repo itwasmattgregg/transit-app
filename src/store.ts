@@ -1,32 +1,32 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import { Provider } from "@/types/Provider";
+import { Route } from "@/types/Route";
 
 Vue.use(Vuex);
 
 interface IStore {
-  providers: Provider[];
+  routes: Route[];
 }
 
-const SET_PROVIDERS = "SET_PROVIDERS";
+const SET_ROUTES = "SET_ROUTES";
 
 const store = new Vuex.Store({
   state: {
-    providers: [] as Provider[]
+    routes: [] as Route[]
   },
   mutations: {
-    [SET_PROVIDERS](state, payload: Provider[]) {
-      state.providers = payload;
+    [SET_ROUTES](state, payload: Route[]) {
+      state.routes = payload;
     }
   },
   actions: {
-    fetchProviders({ commit }) {
+    fetchRoutes({ commit }) {
       axios
-        .get("http://svc.metrotransit.org/nextrip/providers?format=json")
+        .get("http://svc.metrotransit.org/nextrip/routes?format=json")
         .then(function(response) {
           // handle success
-          commit(SET_PROVIDERS, response.data);
+          commit(SET_ROUTES, response.data);
         })
         .catch(function(error) {
           // handle error
