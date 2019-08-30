@@ -77,7 +77,7 @@ const store = new Vuex.Store<IStore>({
     // Called on app load
     fetchRoutes({ commit }) {
       axios
-        .get("http://svc.metrotransit.org/nextrip/routes?format=json")
+        .get("https://svc.metrotransit.org/nextrip/routes?format=json")
         .then(function(response) {
           // handle success
           const routes: RouteResponse = new RouteResponse(
@@ -100,7 +100,7 @@ const store = new Vuex.Store<IStore>({
 
       axios
         .get(
-          `http://svc.metrotransit.org/nextrip/directions/${state.selectedRoute}?format=json`
+          `https://svc.metrotransit.org/nextrip/directions/${state.selectedRoute}?format=json`
         )
         .then(function(response) {
           // handle success
@@ -122,7 +122,7 @@ const store = new Vuex.Store<IStore>({
 
       axios
         .get(
-          `http://svc.metrotransit.org/nextrip/stops/${state.selectedRoute}/${state.selectedDirection}?format=json`
+          `https://svc.metrotransit.org/nextrip/stops/${state.selectedRoute}/${state.selectedDirection}?format=json`
         )
         .then(function(response) {
           // handle success
@@ -139,7 +139,7 @@ const store = new Vuex.Store<IStore>({
     fetchDepartures({ commit, state }) {
       axios
         .get(
-          `http://svc.metrotransit.org/nextrip/${state.selectedRoute}/${state.selectedDirection}/${state.selectedStop}?format=json`
+          `https://svc.metrotransit.org/nextrip/${state.selectedRoute}/${state.selectedDirection}/${state.selectedStop}?format=json`
         )
         .then(function(response) {
           // handle success
