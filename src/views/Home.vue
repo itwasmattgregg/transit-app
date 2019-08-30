@@ -56,34 +56,32 @@ import departureList from "../components/departureList.vue";
   }
 })
 export default class Home extends Vue {
-  selectedRoute: string = "";
-  selectedDirection: string = "";
-  selectedStop: string = "";
-
   created(): void {
     this.$store.dispatch("fetchRoutes");
   }
 
-  @Watch("selectedRoute")
-  onSelectedRouteChanged(value: string) {
-    this.$store.dispatch("fetchDirections", value);
+  get selectedRoute(): string {
+    return this.$store.state.selectedRoute;
+  }
+  set selectedRoute(route: string) {
+    this.$store.dispatch("setSelectedRoute", route);
+    this.$store.dispatch("fetchDirections");
   }
 
-  @Watch("selectedDirection")
-  onDirectionChanged(value: string) {
-    this.$store.dispatch("fetchStops", {
-      routeId: this.selectedRoute,
-      directionId: this.selectedDirection
-    });
+  get selectedDirection(): string {
+    return this.$store.state.selectedDirection;
+  }
+  set selectedDirection(direction: string) {
+    this.$store.dispatch("setSelectedDirection", direction);
+    this.$store.dispatch("fetchStops");
   }
 
-  @Watch("selectedStop")
-  onStopChanged(value: string) {
-    this.$store.dispatch("fetchDepartures", {
-      routeId: this.selectedRoute,
-      directionId: this.selectedDirection,
-      stopId: this.selectedStop
-    });
+  get selectedStop(): string {
+    return this.$store.state.selectedStop;
+  }
+  set selectedStop(stop: string) {
+    this.$store.dispatch("setSelectedStop", stop);
+    this.$store.dispatch("fetchDepartures");
   }
 }
 </script>

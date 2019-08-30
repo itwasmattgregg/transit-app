@@ -63,7 +63,11 @@ export default class busSelect extends Vue {
   @Prop(String) readonly label!: string;
   @Prop(String) readonly selectedRoute!: string;
 
-  handleChange() {
+  created(): void {
+    this.selected = this.selectedRoute;
+  }
+
+  handleChange(): void {
     this.$emit("change", this.selected);
   }
 
