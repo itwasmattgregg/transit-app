@@ -1,6 +1,6 @@
 {
-  "name": "target-transit-app",
-  "short_name": "target-transit-app",
+  "name": "transit-app",
+  "short_name": "transit-app",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

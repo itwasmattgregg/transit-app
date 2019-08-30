@@ -1,7 +1,9 @@
-# target-transit-app
+# transit-app
 This app will help you determine departure information 
 for any given metro transit stop in the twin cities.
 It uses the NextTrip API for data.
+
+Created by Matt Gregg
 
 ## Project setup
 Make sure you have yarn and nvm installed globally
