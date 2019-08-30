@@ -32,6 +32,12 @@
         ></bus-select>
       </div>
     </div>
+    <div class="flex mx-auto w-3/4 pt-12">
+      <departure-list
+        :stopId="selectedStop"
+        :departures="departures"
+      ></departure-list>
+    </div>
   </div>
 </template>
 
@@ -39,13 +45,15 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { mapState } from "vuex";
 import busSelect from "../components/busSelect.vue";
+import departureList from "../components/departureList.vue";
 
 @Component({
   components: {
-    busSelect
+    busSelect,
+    departureList
   },
   computed: {
-    ...mapState(["routes", "directions", "stops"])
+    ...mapState(["routes", "directions", "stops", "departures"])
   }
 })
 export default class Home extends Vue {
@@ -63,10 +71,19 @@ export default class Home extends Vue {
   }
 
   @Watch("selectedDirection")
-  onChanged(value: string) {
+  onDirectionChanged(value: string) {
     this.$store.dispatch("fetchStops", {
       routeId: this.selectedRoute,
       directionId: this.selectedDirection
+    });
+  }
+
+  @Watch("selectedStop")
+  onStopChanged(value: string) {
+    this.$store.dispatch("fetchDepartures", {
+      routeId: this.selectedRoute,
+      directionId: this.selectedDirection,
+      stopId: this.selectedStop
     });
   }
 }
