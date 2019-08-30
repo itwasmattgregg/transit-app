@@ -1,9 +1,15 @@
 # target-transit-app
+This app will help you determine departure information 
+for any given metro transit stop in the twin cities.
+It uses the NextTrip API for data.
 
 ## Project setup
+Make sure you have yarn and nvm installed globally
 ```
-yarn install
+npm i -g yarn nvm
 ```
+Run `nvm use` inside this project root.
+Then run `yarn install`.
 
 ### Compiles and hot-reloads for development
 ```
@@ -15,15 +21,7 @@ yarn run serve
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
 ### Lints and fixes files
 ```
 yarn run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

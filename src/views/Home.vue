@@ -6,7 +6,6 @@
         class="object-cover h-64 w-full"
       />
     </div>
-    <!-- Make this a selector component -->
     <div
       class="flex w-3/4 -mt-10 m-auto p-8 text-left shadow-md rounded-lg controls"
     >
